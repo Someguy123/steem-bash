@@ -1,4 +1,5 @@
 #!/bin/bash
-source lib/helpers.sh
-source lib/cliwallet.sh
-source lib/steemnode.sh
+for f in plugins/*.sh; do
+    echo "Loading $f"
+    source $f
+done

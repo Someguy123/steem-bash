@@ -66,7 +66,8 @@ container_is_running() {
 }
 
 wallet_running() {
-    return container_is_running $CLICONTAINER_NAME
+    container_is_running $CLICONTAINER_NAME
+    return $?
 }
 
 #

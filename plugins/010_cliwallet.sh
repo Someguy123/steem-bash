@@ -58,7 +58,7 @@ function cli_start() {
 
 container_is_running() {
     contcount=$(docker ps -f 'status=running' -f name=$1 | wc -l)
-    if [[ $walletcount -eq 2 ]]; then
+    if [[ $contcount -eq 2 ]]; then
 	return 0
     else
 	return -1

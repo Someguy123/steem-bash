@@ -1,4 +1,9 @@
 #!/bin/bash
+#
+# Part of Someguy123's Steem Bash Tools
+# Released under GNU GPL 3.0
+# https://github.com/Someguy123/steem-bash
+
 
 if [[ ! $(command -v cli_exec) ]]; then
     echo "ERROR: cliwallet.sh plugin not loaded"

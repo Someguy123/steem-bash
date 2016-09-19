@@ -1,5 +1,10 @@
 #!/bin/bash
 #
+# Part of Someguy123's Steem Bash Tools
+# Released under GNU GPL 3.0
+# https://github.com/Someguy123/steem-bash
+
+#
 # Functions related to basic
 # CLI_WALLET commands
 #

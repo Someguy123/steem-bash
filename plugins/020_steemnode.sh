@@ -19,7 +19,11 @@ STEEM_CONNECTED=0
 #
 function connect_steem() {
     if [[ $STEEM_CONNECTED -eq 1 ]]; then
-        return
+        container_is_running cli_gen
+        if [[ $? -eq 0 ]]; then
+            # if we're sure it's not running, then we can ignore it
+            return
+        fi
     fi
     echo "Stopping any existing containers..."
     cli_stop &> /dev/null

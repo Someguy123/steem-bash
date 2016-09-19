@@ -56,13 +56,17 @@ function cli_start() {
     fi
 }
 
-wallet_running() {
-    walletcount=$(docker ps -f 'status=running' -f name=$CLICONTAINER_NAME | wc -l)
+container_is_running() {
+    contcount=$(docker ps -f 'status=running' -f name=$1 | wc -l)
     if [[ $walletcount -eq 2 ]]; then
 	return 0
     else
 	return -1
     fi
+}
+
+wallet_running() {
+    return container_is_running $CLICONTAINER_NAME
 }
 
 #
@@ -98,4 +102,5 @@ function cli_stop() {
     docker stop -t 2 $CLICONTAINER_NAME &>/dev/null
     docker rm $CLICONTAINER_NAME &>/dev/null
     CLI_STARTED=0
+    STEEM_CONNECTED=0
 }

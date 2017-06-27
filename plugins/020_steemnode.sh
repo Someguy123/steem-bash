@@ -30,7 +30,7 @@ function connect_steem() {
     # create internal network if needed
     create_network
     # connect the witness/rpc node to the network
-    docker network connect $DKR_NETWORK $STEEM_CONTAINER
+    sudo docker network connect $DKR_NETWORK $STEEM_CONTAINER
     # override existing WS connection
     local CLIWS="ws://$STEEM_CONTAINER:8090"
     echo "Starting new connection to $CLIWS"

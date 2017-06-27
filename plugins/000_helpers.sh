@@ -4,6 +4,13 @@
 # Released under GNU GPL 3.0
 # https://github.com/Someguy123/steem-bash
 
+# let's avoid locale issues...
+
+export LANGUAGE="en_GB.UTF-8"
+export LANG="en_GB.UTF-8"
+export LC_ALL="en_GB.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+
 #
 # Extracts a string key from JSON via stdin
 # $ echo '{"x": "y"}' | extract_json_str x
@@ -98,8 +105,7 @@ function install_docker() {
 }
 
 function install_conductor() {
-    sudo apt install python3-pip python3.5-dev
-    sudo apt install libssl-dev
+    sudo apt install -qy python3-pip python3.5-dev libssl-dev
     pip3 install -U git+https://github.com/Netherdrake/conductor
     echo "ADD YOUR ACTIVE KEY"
     steempy addkey

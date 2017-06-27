@@ -24,9 +24,9 @@ DKR_NETWORK="witness_nw"
 function create_network() {
     # check if the network exists
     # if not, just create it
-    IS_WITNESS_NET=$(docker network ls -q -f name=$DKR_NETWORK | wc -l)
+    IS_WITNESS_NET=$(sudo docker network ls -q -f name=$DKR_NETWORK | wc -l)
     if [[ ! IS_WITNESS_NET -eq 1 ]]; then
-        docker network create -d bridge --subnet 172.22.0.0/16 $DKR_NETWORK
+        sudo docker network create -d bridge --subnet 172.22.0.0/16 $DKR_NETWORK
     fi
 }
 #
@@ -40,7 +40,7 @@ function cli_start() {
     create_network
     # to be safe, kill first
     cli_stop
-    docker run -d --network=$DKR_NETWORK -p $CLIPORT:$CLIPORT --name="$CLICONTAINER_NAME" "$CONTNAME" cli_wallet \
+    sudo docker run -d --network=$DKR_NETWORK -p $CLIPORT:$CLIPORT --name="$CLICONTAINER_NAME" "$CONTNAME" cli_wallet \
         --rpc-http-endpoint="0.0.0.0:$CLIPORT" \
         -s "$CLIWS" --rpc-http-allowip="127.0.0.1" \
         --rpc-http-allowip="172.17.0.1" -d &>/dev/null
@@ -57,7 +57,7 @@ function cli_start() {
 }
 
 container_is_running() {
-    contcount=$(docker ps -f 'status=running' -f name=$1 | wc -l)
+    contcount=$(sudo docker ps -f 'status=running' -f name=$1 | wc -l)
     if [[ $contcount -eq 2 ]]; then
 	return 0
     else
@@ -93,15 +93,15 @@ function gen_key() {
 # cli_exec 'suggest_brain_key'
 #
 function cli_exec() {
-    echo $(docker exec $CLICONTAINER_NAME curl -s \
+    echo $(sudo docker exec $CLICONTAINER_NAME curl -s \
         --data-binary '{"id":"'"$CLI_CALL_ID"'","method":"'"$1"'","params":['"$2"']}' \
         http://127.0.0.1:5000)
     CLI_CALL_ID=$((CLI_CALL_ID+1))
 }
 
 function cli_stop() {
-    docker stop -t 2 $CLICONTAINER_NAME &>/dev/null
-    docker rm $CLICONTAINER_NAME &>/dev/null
+    sudo docker stop -t 2 $CLICONTAINER_NAME &>/dev/null
+    sudo docker rm $CLICONTAINER_NAME &>/dev/null
     CLI_STARTED=0
     STEEM_CONNECTED=0
 }

@@ -84,7 +84,7 @@ function install_deps() {
     if [[ $? -eq 1 ]]; then
         echo "Installing dependencies"
         # we're missing dependencies, let's install them
-        apt-get install -qy python3 python3-pip curl git
+        sudo apt install -qy python3 python3-pip curl git
     fi
 }
 
@@ -95,6 +95,16 @@ function install_docker() {
         return
     fi
     curl -sSL https://get.docker.com/ | sh
+}
+
+function install_conductor() {
+    sudo apt install python3-pip python3.5-dev
+    sudo apt install libssl-dev
+    pip3 install -U git+https://github.com/Netherdrake/conductor
+    echo "ADD YOUR ACTIVE KEY"
+    steempy addkey
+    echo "INIT WITNESS"
+    conductor init
 }
 
 function install_steembox() {

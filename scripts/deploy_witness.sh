@@ -9,15 +9,22 @@ function deploy_witness() {
     echo "Installing steem-in-a-box with docker"
     install_docker
     install_steembox
+    echo "Installing @furion's conductor"
+    install_conductor
     # PWD should now be steem-docker
     echo "Configuring witness"
     cd data/witness_node_data_dir
+    echo -n "How big do you want SHM? (e.g. enter 16 for 16gb): "
+    read SHMSIZE
+    echo "SHM SIZE is $SHMSIZE"
     # fire up a temporary CLI_WALLET for generating keys and things
     cli_start
     # we do an initial config here
     # so it's safe to assume we can add/remove anything we want
     config_unset p2p-endpoint miner mining-threads 
     config_set rpc-endpoint "0.0.0.0:8090"
+    config_set shared-file-size "$SHMSIZE"G
+    sudo ./run.sh shm_size "$SHMSIZE"G
     config_witness "${@}"
     echo "For easier configuration in the future, add the following to your .bashrc or .zshrc :"
     echo "export CONFIG_FILE=$PWD/config.ini"

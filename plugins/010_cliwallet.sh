@@ -101,7 +101,7 @@ function cli_exec() {
 
 function cli_stop() {
     sudo docker stop -t 2 $CLICONTAINER_NAME &>/dev/null
-    sudo docker rm $CLICONTAINER_NAME &>/dev/null
+    sudo docker rm -f $CLICONTAINER_NAME &>/dev/null
     CLI_STARTED=0
     STEEM_CONNECTED=0
 }

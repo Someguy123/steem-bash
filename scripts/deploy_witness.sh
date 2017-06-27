@@ -22,11 +22,11 @@ function deploy_witness() {
     config_unset p2p-endpoint miner mining-threads 
     config_set rpc-endpoint "0.0.0.0:8090"
     config_set shared-file-size "$SHMSIZE"G
-    sudo ./run.sh shm_size "$SHMSIZE"G
     config_witness "${@}"
     echo "For easier configuration in the future, add the following to your .bashrc or .zshrc :"
     echo "export CONFIG_FILE=$PWD/config.ini"
     cd ../..
+    sudo ./run.sh shm_size "$SHMSIZE"G
     # okay we're done, so clean up the cli_wallet
     cli_stop
     echo "Downloading blocks..."

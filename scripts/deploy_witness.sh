@@ -9,8 +9,6 @@ function deploy_witness() {
     echo "Installing steem-in-a-box with docker"
     install_docker
     install_steembox
-    echo "Installing @furion's conductor"
-    install_conductor
     # PWD should now be steem-docker
     echo "Configuring witness"
     cd data/witness_node_data_dir
@@ -33,6 +31,8 @@ function deploy_witness() {
     cli_stop
     echo "Downloading blocks..."
     ./run.sh dlblocks
+    echo "Installing @furion's conductor"
+    install_conductor
     echo "Witness is ready. To start: ./run.sh start"
 }
 

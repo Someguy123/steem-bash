@@ -14,7 +14,8 @@ CONTNAME="steem"
 # What to name the temporary CLI container
 CLICONTAINER_NAME="cli_gen"
 CLIPORT=5000
-CLIWS="wss://node.steem.ws"
+#CLIWS="wss://node.steem.ws"
+CLIWS="wss://steemd.steemit.com"
 # increments each time
 CLI_CALL_ID=1
 # Network used for cli_wallet, to allow connection

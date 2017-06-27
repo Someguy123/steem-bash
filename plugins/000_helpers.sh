@@ -126,7 +126,7 @@ function install_steembox() {
     fi
     git clone https://github.com/Someguy123/steem-docker
     cd steem-docker
-    ./run.sh install
+    sudo ./run.sh install
     return
 }
 function prepend_config() {

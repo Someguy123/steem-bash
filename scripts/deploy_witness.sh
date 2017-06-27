@@ -31,6 +31,8 @@ function deploy_witness() {
     cd ../..
     # okay we're done, so clean up the cli_wallet
     cli_stop
+    echo "Downloading blocks..."
+    ./run.sh dlblocks
     echo "Witness is ready. To start: ./run.sh start"
 }
 

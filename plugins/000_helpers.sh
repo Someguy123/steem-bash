@@ -115,6 +115,14 @@ function install_conductor() {
     conductor init
 }
 
+function install_ntp() {
+    echo "Installing NTP..."
+    apt install -y ntp
+    echo "minpoll 5" | sudo tee -a /etc/ntp.conf
+    echo "maxpoll 7" | sudo tee -a /etc/ntp.conf
+    service ntp restart
+}
+
 function install_steembox() {
     install_deps
     if [[ -d "steem-docker" ]]; then

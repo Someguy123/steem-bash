@@ -7,6 +7,7 @@
 
 function deploy_witness() {
     echo "Installing steem-in-a-box with docker"
+    install_ntp
     install_docker
     install_steembox
     # PWD should now be steem-docker

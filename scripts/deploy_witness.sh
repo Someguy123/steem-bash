@@ -33,6 +33,8 @@ function deploy_witness() {
     echo "Downloading blocks..."
     ./run.sh dlblocks
     echo "Installing @furion's conductor"
+    export UNLOCK=""
+    echo "export UNLOCK=\"\"" >> $HOME/.profile
     install_conductor
     echo "Witness is ready. To start: ./run.sh start"
 }

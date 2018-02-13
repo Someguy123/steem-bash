@@ -105,7 +105,7 @@ function install_docker() {
 }
 
 function install_conductor() {
-    apt install libffi-dev libssl-dev python3 python3-dev python3-pip
+    apt install -qy libffi-dev libssl-dev python3 python3-dev python3-pip
     pip3 install --upgrade pip
     pip3 install -U git+git://github.com/Netherdrake/steem-python
     pip3 install -U git+https://github.com/Netherdrake/conductor

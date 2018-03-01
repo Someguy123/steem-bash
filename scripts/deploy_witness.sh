@@ -26,6 +26,8 @@ function deploy_witness() {
     config_witness "${@}"
     echo "For easier configuration in the future, add the following to your .bashrc or .zshrc :"
     echo "export CONFIG_FILE=$PWD/config.ini"
+    echo "DOCKER_NAME=witness" >> .env
+    echo "PORTS=" >> .env
     cd ../..
     sudo ./run.sh shm_size "$SHMSIZE"G
     # okay we're done, so clean up the cli_wallet

@@ -6,6 +6,9 @@
 
 
 function deploy_witness() {
+    echo -n "How big do you want SHM? (e.g. enter 16 for 16gb): "
+    read SHMSIZE
+    echo "SHM SIZE is $SHMSIZE"
     echo "Installing steem-in-a-box with docker"
     install_ntp
     install_docker
@@ -13,9 +16,6 @@ function deploy_witness() {
     # PWD should now be steem-docker
     echo "Configuring witness"
     cd data/witness_node_data_dir
-    echo -n "How big do you want SHM? (e.g. enter 16 for 16gb): "
-    read SHMSIZE
-    echo "SHM SIZE is $SHMSIZE"
     # fire up a temporary CLI_WALLET for generating keys and things
     cli_start
     # we do an initial config here
@@ -38,7 +38,7 @@ function deploy_witness() {
     export UNLOCK=""
     echo "export UNLOCK=\"\"" >> $HOME/.profile
     install_conductor
-    echo "Witness is ready. To start: ./run.sh start"
+    echo "Witness is ready. To start: ./run.sh replay"
 }
 
 function config_witness() {

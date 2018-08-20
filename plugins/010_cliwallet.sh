@@ -10,17 +10,17 @@
 #
 CLI_STARTED=0
 # Name of the docker image to use
-CONTNAME="steem"
+: ${CONTNAME:="steem"}
 # What to name the temporary CLI container
-CLICONTAINER_NAME="cli_gen"
-CLIPORT=5000
+: ${CLICONTAINER_NAME="cli_gen"}
+: ${CLIPORT=5000}
 #CLIWS="wss://node.steem.ws"
-CLIWS="wss://steemd.privex.io"
+: ${CLIWS="wss://steemd.privex.io"}
 # increments each time
 CLI_CALL_ID=1
 # Network used for cli_wallet, to allow connection
 # to other containers, e.g. RPC node, witness etc.
-DKR_NETWORK="witness_nw"
+: ${DKR_NETWORK="witness_nw"}
 
 function create_network() {
     # check if the network exists
@@ -60,9 +60,9 @@ function cli_start() {
 container_is_running() {
     contcount=$(sudo docker ps -f 'status=running' -f name=$1 | wc -l)
     if [[ $contcount -eq 2 ]]; then
-	return 0
+	    return 0
     else
-	return -1
+	    return 1
     fi
 }
 

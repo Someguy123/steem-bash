@@ -10,7 +10,7 @@ if [[ ! $(command -v cli_exec) ]]; then
     exit
 fi
 
-STEEM_CONTAINER=seed
+: ${STEEM_CONTAINER="seed"}
 STEEM_CONNECTED=0
 #
 # Required before any local node commands will function.
@@ -46,7 +46,9 @@ function steem_status() {
     LAST_BLOCK=$(echo $_INFO | extract_json_str head_block_age)
     HEAD_BLOCK=$(echo $_INFO | extract_json_int head_block_num)
     CLI_VERSION=$(echo $_ABOUT | extract_json_str client_version)
+    SRV_VERSION=$(echo $_ABOUT | extract_json_str server_blockchain_version)
     echo "Last block was: $LAST_BLOCK"
     echo "Block number: $HEAD_BLOCK"
     echo "Client Version: $CLI_VERSION"
+    echo "Server Version: $SRV_VERSION"
 }

@@ -39,6 +39,10 @@ function deploy_witness() {
     echo "export UNLOCK=\"\"" >> $HOME/.profile
     install_conductor
     echo "Witness is ready. To start: ./run.sh replay"
+    echo "Your config info:"
+    echo "  User: $WITNESSNAME"
+    echo "  Public Signing Key: $PUBKEY"
+    echo "  Private Signing Key: $PRIVKEY"
 }
 
 function config_witness() {

@@ -47,6 +47,18 @@ There are a variety of methods available, lower and higher level.
 
 ---
 
+**deploy_seed** (scripts/deploy_node.sh)
+
+Deploys a standard seed node, with shared_memory kept in /dev/shm
+
+Arguments (optional): shared_memory_size (e.g. 70G, default: 64G)
+
+**deploy_seed_disk** (scripts/deploy_node.sh)
+
+Deploys a standard seed node, with shared_memory kept in the witness_node_datadir (on disk normally)
+
+Arguments (optional): shared_memory_size (e.g. 70G, default: 64G)
+
 **deploy_witness** (scripts/deploy_witness.sh)
 
 Powerful command. Installs docker, steem-in-a-box, configures the config.ini as required, downloads the latest steem docker image via steem-in-a-box

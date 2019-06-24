@@ -11,6 +11,8 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 
+export SIAB_FOLDER="${PWD}/steem-docker"
+
 #
 # Extracts a string key from JSON via stdin
 # $ echo '{"x": "y"}' | extract_json_str x
@@ -135,6 +137,7 @@ function install_steembox() {
         return
     fi
     git clone https://github.com/Someguy123/steem-docker
+    export SIAB_FOLDER="${PWD}/steem-docker"
     cd steem-docker
     sudo ./run.sh install
     return

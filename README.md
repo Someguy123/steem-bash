@@ -17,7 +17,7 @@ For deployment purposes, compiled versions are available on the releases page:
 
 Example:
 
-    (curl -L https://github.com/Someguy123/steem-bash/releases/download/0.0.1/compiled.sh > steem.sh) &&\
+    (curl -L https://github.com/Someguy123/steem-bash/releases/download/0.2/compiled.sh > steem.sh) &&\
     source steem.sh &&\
     deploy_witness YOURNAME &&\
     ./run.sh start

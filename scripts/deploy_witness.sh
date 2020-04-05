@@ -63,7 +63,7 @@ function deploy_witness() {
         sudo ./run.sh shm_size "$SHMSIZE"G
     fi
     echo "Downloading blocks..."
-    ./run.sh dlblocks
+    rsync -avh --progress --append "rsync://files.privex.io/$NETWORK/block_log" data/witness_node_data_dir/blockchain/block_log
     # echo "Installing @furion's conductor"
     # export UNLOCK=""
     # echo "export UNLOCK=\"\"" >> $HOME/.profile

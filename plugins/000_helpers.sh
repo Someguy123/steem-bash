@@ -139,7 +139,7 @@ function install_steembox() {
     git clone https://github.com/Someguy123/steem-docker
     export SIAB_FOLDER="${PWD}/steem-docker"
     cd steem-docker
-    sudo ./run.sh install
+    # sudo ./run.sh install
     return
 }
 function prepend_config() {
